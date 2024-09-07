@@ -72,9 +72,26 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const PopupMenuItem(
+                   PopupMenuItem(
                     value: PopoupMenuType.delete,
-                    child: Row(
+                      onTap: () {
+                      showDialog(context: context, builder: (context) {
+                        return AlertDialog(
+                          title: const Text("Delete Product"),
+                          content: const Text("Are you sure want to delete this product?"),
+                          actions: [
+                            TextButton(onPressed: (){
+                              Navigator.pop(context);
+                            }, child: const Text("Cancel"),),
+                            TextButton(onPressed: (){
+                              Navigator.pop(context);
+                            }, child: const Text("Yes, Delete", style: TextStyle(color: Colors.red),),),
+                          ],
+                        );
+                      });
+                      },
+
+                    child: const Row(
                       children: [
                         Icon(Icons.delete),
                         SizedBox(width: 10),
