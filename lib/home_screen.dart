@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'add_product_screen.dart';
+import 'edit_prodcut_screen.dart';
 
 enum PopoupMenuType { edit, delete }
 
@@ -54,9 +54,15 @@ class HomeScreen extends StatelessWidget {
               ),
               trailing: PopupMenuButton<PopoupMenuType>(
                 itemBuilder: (context) => [
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: PopoupMenuType.edit,
-                    child: Row(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const EditProductScreen()),
+                      );
+                    },
+                    child: const Row(
                       children: [
                         Icon(Icons.edit),
                         SizedBox(
@@ -71,9 +77,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Icon(Icons.delete),
-                        SizedBox(
-                          width: 10,
-                        ),
+                        SizedBox(width: 10),
                         Text("Delete"),
                       ],
                     ),
